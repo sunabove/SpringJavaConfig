@@ -5,7 +5,9 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.AbstractConfigurableTemplateResolver;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import org.thymeleaf.templateresolver.FileTemplateResolver;
 
 @Configuration
 public class ThymeLeafConfig implements WebMvcConfigurer {
@@ -15,15 +17,20 @@ public class ThymeLeafConfig implements WebMvcConfigurer {
 
     @Bean
     @Description("Thymeleaf template resolver serving HTML 5")
-    public ClassLoaderTemplateResolver templateResolver() {
-        var templateResolver = new ClassLoaderTemplateResolver();
+    public AbstractConfigurableTemplateResolver templateResolver() {
+    	AbstractConfigurableTemplateResolver templateResolver = new FileTemplateResolver ();
+    	
+    	String externalFolder = "/Templates/" ; 
+    	if( externalFolder.length() < 1 ) {
+    		templateResolver = new ClassLoaderTemplateResolver();
+    	}
 
-        templateResolver.setPrefix("templates/");
-        templateResolver.setCacheable(false);
+        templateResolver.setPrefix( externalFolder );
         //templateResolver.setSuffix(".html");
         // templateResolver.setTemplateMode("HTML5");
         templateResolver.setTemplateMode("HTML");
         templateResolver.setCharacterEncoding("UTF-8");
+        templateResolver.setCacheable(false);
 
         return templateResolver;
     }
