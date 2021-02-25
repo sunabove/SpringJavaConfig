@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.ArrayList;
+
 import org.slf4j.*; 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +32,12 @@ public class CustomerController {
 	      log.info("Customers found with findAll():");
 	      log.info("-------------------------------");
 	      
-	      Iterable<Customer> customers = repository.findAll() ;
 	      
-	      for (Customer customer : customers ) {
-	        log.info(customer.toString());
+	      ArrayList<Customer> customers = new ArrayList<>(  );
+	      
+	      for (Customer customer : repository.findAll() ) {
+	    	  customers.add( customer );
+	    	  log.info(customer.toString());
 	      }
 	      log.info("");
 
@@ -56,6 +60,8 @@ public class CustomerController {
 	      log.info("");
 	      
 	      model.addAttribute( "result", "Success" );
+	      
+	      model.addAttribute( "customers", customers ); 
 		
 		return "Customer.html"; 
 	}
