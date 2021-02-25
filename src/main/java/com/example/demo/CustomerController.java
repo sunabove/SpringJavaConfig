@@ -7,8 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.model.Customer;
-import com.example.demo.model.CustomerRepository;
+import com.example.demo.model.*;
 
 @Controller
 public class CustomerController {
@@ -19,7 +18,7 @@ public class CustomerController {
 	CustomerRepository repository ; 
 	
 	@GetMapping("/customer")
-	public String customer(Model model, @RequestParam(value = "name", defaultValue = "World") String name) {
+	public String customer(Model model) {
 		// save a few customers
 	      repository.save(new Customer("Jack", "Bauer"));
 	      repository.save(new Customer("Chloe", "O'Brian"));
@@ -30,7 +29,10 @@ public class CustomerController {
 	      // fetch all customers
 	      log.info("Customers found with findAll():");
 	      log.info("-------------------------------");
-	      for (Customer customer : repository.findAll()) {
+	      
+	      Iterable<Customer> customers = repository.findAll() ;
+	      
+	      for (Customer customer : customers ) {
 	        log.info(customer.toString());
 	      }
 	      log.info("");
@@ -52,7 +54,9 @@ public class CustomerController {
 	      //  log.info(bauer.toString());
 	      // }
 	      log.info("");
+	      
+	      model.addAttribute( "result", "Success" );
 		
-		return "NewFile.html"; 
+		return "Customer.html"; 
 	}
 }
