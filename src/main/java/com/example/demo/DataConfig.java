@@ -3,7 +3,8 @@ package com.example.demo;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.*; 
 
-@Configuration public class DataConfig {
+@Configuration 
+public class DataConfig {
 
     public DataConfig() {
     }
