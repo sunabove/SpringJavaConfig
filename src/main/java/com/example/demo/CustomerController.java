@@ -21,7 +21,9 @@ public class CustomerController {
 	
 	@GetMapping("/customer")
 	public String customer(Model model) {
-		// save a few customers
+		
+		  //CustomerRepository c = new CustomerRepository(); 
+		  // save a few customers
 	      repository.save(new Customer("Jack", "Bauer"));
 	      repository.save(new Customer("Chloe", "O'Brian"));
 	      repository.save(new Customer("Kim", "Bauer"));
@@ -45,7 +47,7 @@ public class CustomerController {
 	      Customer customer = repository.findById(1L);
 	      log.info("Customer found with findById(1L):");
 	      log.info("--------------------------------");
-	      log.info(customer.toString());
+	      log.info( "" + customer );
 	      log.info("");
 
 	      // fetch customers by last name
@@ -54,9 +56,7 @@ public class CustomerController {
 	      repository.findByLastName("Bauer").forEach(bauer -> {
 	        log.info(bauer.toString());
 	      });
-	      // for (Customer bauer : repository.findByLastName("Bauer")) {
-	      //  log.info(bauer.toString());
-	      // }
+	      
 	      log.info("");
 	      
 	      model.addAttribute( "result", "Success" );

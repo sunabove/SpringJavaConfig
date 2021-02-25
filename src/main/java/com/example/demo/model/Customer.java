@@ -12,8 +12,7 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String firstName;
-	private String lastName;  
-	private java.sql.Timestamp birthDate ;
+	private String lastName; 
 
 	protected Customer() { 
 	}
