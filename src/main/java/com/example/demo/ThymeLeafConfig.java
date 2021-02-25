@@ -20,7 +20,7 @@ public class ThymeLeafConfig implements WebMvcConfigurer {
     public AbstractConfigurableTemplateResolver templateResolver() {
     	AbstractConfigurableTemplateResolver templateResolver = new FileTemplateResolver ();
     	
-    	String externalFolder = "/DEV/WorkspaceSpring/Template/html/" ; 
+    	String externalFolder = "/DEV/WorkspaceSpring/MyTemplate/WebContent/html/" ; 
     	if( externalFolder.length() < 1 ) {
     		templateResolver = new ClassLoaderTemplateResolver();
     	} else if ( ! externalFolder.endsWith( "/")  ) {
