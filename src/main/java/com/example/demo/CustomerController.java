@@ -1,21 +1,17 @@
-package com.example.demo;
+package com.example.demo.model;
 
 import java.util.ArrayList;
-
-import org.slf4j.*; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.model.*;
+import lombok.extern.slf4j.Slf4j;
 
-@RestController
-public class CustomerController {
-	
-	private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
-	
+@Controller
+@Slf4j
+public class CustomerController {	
 	@Autowired 
 	CustomerRepository repository ; 
 	
