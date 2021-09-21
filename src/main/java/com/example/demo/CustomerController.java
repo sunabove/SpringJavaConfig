@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.model.*;
 
-@Controller
+@RestController
 public class CustomerController {
 	
 	private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
@@ -19,7 +19,7 @@ public class CustomerController {
 	@Autowired 
 	CustomerRepository repository ; 
 	
-	@GetMapping("/customer")
+	@RequestMapping("/Customer.html")
 	public String customer(Model model) {
 		
 		  //CustomerRepository c = new CustomerRepository(); 
